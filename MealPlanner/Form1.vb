@@ -18,14 +18,14 @@ Public Class Form1
             results = results & myReader.GetString(0) & vbLf
         Loop
         '
-        lblOutput.Text = results
+        lblMaxCalOutput.Text = results
         myReader.Close()
         myConn.Close()
     End Sub
 
-    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
+    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnMaxCalOK.Click
         results = ""
-        lblOutput.Text = ""
+        lblMaxCalOutput.Text = ""
         Dim calories As String = txtCalorieInput.Text
         myConn.Open()
         myCmd.CommandText = "SELECT Food FROM Food WHERE Calories < " & calories
@@ -35,7 +35,23 @@ Public Class Form1
             results = results & myReader.GetString(0) & vbLf
         Loop
         '
-        lblOutput.Text = results
+        lblMaxCalOutput.Text = results
+        myReader.Close()
+        myConn.Close()
+    End Sub
+
+    Private Sub btnFoodSearch_Click(sender As Object, e As EventArgs) Handles btnFoodSearch.Click
+        results = ""
+        Dim food As String = "'" & txtFoodSearch.Text & "'"
+        myConn.Open()
+        myCmd.CommandText = "SELECT Calories, Protein, Carbohydrate, Fat FROM Food WHERE Food = " & food
+        myReader = myCmd.ExecuteReader()
+        Do While myReader.Read()
+            lblCalorieOutput.Text = myReader.GetInt32(0)
+            lblProteinOutput.Text = myReader.GetDouble(1)
+            lblCarbOutput.Text = myReader.GetDouble(2)
+            lblFatOutput.Text = myReader.GetDouble(3)
+        Loop
         myReader.Close()
         myConn.Close()
     End Sub
