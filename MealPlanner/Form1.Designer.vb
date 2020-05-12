@@ -70,9 +70,9 @@ Partial Class Form1
         Me.lblMaxCalOutput.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lblMaxCalOutput.Location = New System.Drawing.Point(526, 31)
         Me.lblMaxCalOutput.Name = "lblMaxCalOutput"
-        Me.lblMaxCalOutput.Size = New System.Drawing.Size(10, 13)
+        Me.lblMaxCalOutput.Size = New System.Drawing.Size(40, 13)
         Me.lblMaxCalOutput.TabIndex = 4
-        Me.lblMaxCalOutput.Text = " "
+        Me.lblMaxCalOutput.Text = " (Food)"
         '
         'lblFoodSearch
         '
